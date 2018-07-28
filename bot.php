@@ -80,44 +80,4 @@ if ($type == 'join' || $command == '/menu') {
         )
     );
 }
-
-//pesan bergambar
-if($message['type']=='text') {
-	    if ($command == '/shalat') {
-
-        $result = shalat($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-
-}else if($message['type']=='sticker')
-{	
-	$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => '',									
-																				
-									
-									)
-							)
-						);
-						
-}
-if (isset($balas)) {
-    $result = json_encode($balas);
-//$result = ob_get_clean();
-
-    file_put_contents('./balasan.json', $result);
-
-
-    $client->replyMessage($balas);
-}
 ?>
